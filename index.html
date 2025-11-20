@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Raj Kumar Singh | Full Stack & AI/ML</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+        content="Portfolio of Raj Kumar Singh - Full Stack Developer, MERN Stack, AI/ML, Data Analytics, Web Development, Management." />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #0f172a;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #1e293b 0, #020617 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      align-items: center;
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3.1vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 34rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 0.3rem 0.8rem;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.3rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease,
+        background 0.2s ease, border-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #a855f7);
+      color: white;
+      box-shadow: 0 18px 35px rgba(79, 70, 229, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 40px rgba(79, 70, 229, 0.7);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(99, 102, 241, 0.4), transparent 45%),
+                  radial-gradient(circle at bottom, rgba(56, 189, 248, 0.25), transparent 55%);
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1.3rem 1.3rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 22px;
+      padding: 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-card h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-meta-block {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 14px;
+      padding: 0.65rem 0.8rem;
+      border: 1px solid rgba(75, 85, 99, 0.7);
+    }
+
+    .hero-meta-label {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-meta-value {
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.9rem;
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      padding: 0.22rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      color: #c7d2fe;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 2.5rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.3rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1rem 1rem 1.1rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.75);
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      padding: 0.27rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      color: var(--muted);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .project-tech {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-links {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .project-links a {
+      color: #a5b4fc;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Education & Certificates */
+    .edu-cert-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+      gap: 1rem;
+    }
+
+    .list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .list li {
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Contact */
+    .contact-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.3rem;
+      align-items: center;
+    }
+
+    .contact-details {
+      font-size: 0.95rem;
+    }
+
+    .contact-row {
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-label {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .contact-value a {
+      color: #c7d2fe;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .social-chip {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+    }
+
+    .social-chip:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-top: 2rem;
+      border-top: 1px solid rgba(30, 64, 175, 0.4);
+      margin-top: 2.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .edu-cert-grid,
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Raj Kumar Singh</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div>
+        <h1 class="hero-title">
+          Full Stack & <span>AI/ML</span> Developer
+        </h1>
+        <p class="hero-subtitle">
+          I’m <strong>Raj Kumar Singh</strong>, a Full Stack Developer and AI/ML enthusiast
+          specializing in <strong>MERN stack, data analytics</strong> and
+          modern web development. I love turning ideas into scalable, data-driven solutions.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Full Stack Development</span>
+          <span class="badge">MERN Stack</span>
+          <span class="badge">AI / Machine Learning</span>
+          <span class="badge">Data Analytics</span>
+          <span class="badge">Web Development</span>
+          <span class="badge">Management</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Projects →</a>
+          <a href="#contact" class="btn-ghost">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <h3>Profile Snapshot</h3>
+          <div class="hero-meta">
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Core Focus</div>
+              <div class="hero-meta-value">Full Stack & AI/ML</div>
+            </div>
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Tech Stack</div>
+              <div class="hero-meta-value">MERN, Python, SQL</div>
+            </div>
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Strengths</div>
+              <div class="hero-meta-value">Problem Solving, Ownership</div>
+            </div>
+            <div class="hero-meta-block">
+              <div class="hero-meta-label">Looking For</div>
+              <div class="hero-meta-value">Full-time / Internship</div>
+            </div>
+          </div>
+
+          <div class="hero-tags">
+            <span class="hero-tag">REST APIs</span>
+            <span class="hero-tag">MongoDB</span>
+            <span class="hero-tag">React.js</span>
+            <span class="hero-tag">Node.js</span>
+            <span class="hero-tag">Machine Learning</span>
+            <span class="hero-tag">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">
+        A blend of full stack engineering, AI/ML and data analytics with a strong foundation in software development.
+      </p>
+
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Full Stack & Web Development</h3>
+          <p class="section-subtitle">
+            Designing and building end-to-end web applications.
+          </p>
+          <div class="pill-row">
+            <span class="pill">HTML5</span>
+            <span class="pill">CSS3</span>
+            <span class="pill">JavaScript (ES6+)</span>
+            <span class="pill">Responsive Design</span>
+            <span class="pill">REST APIs</span>
+            <span class="pill">MVC Architecture</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>MERN Stack</h3>
+          <p class="section-subtitle">
+            Building modern, scalable single-page applications.
+          </p>
+          <div class="pill-row">
+            <span class="pill">MongoDB</span>
+            <span class="pill">Mongoose</span>
+            <span class="pill">Express.js</span>
+            <span class="pill">React.js</span>
+            <span class="pill">Node.js</span>
+            <span class="pill">JWT Auth</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>AI / Machine Learning</h3>
+          <p class="section-subtitle">
+            Building intelligent systems with Python and ML libraries.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">NumPy</span>
+            <span class="pill">Pandas</span>
+            <span class="pill">Matplotlib</span>
+            <span class="pill">Scikit-learn</span>
+            <span class="pill">Regression / Classification</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Data Analytics & Tools</h3>
+          <p class="section-subtitle">
+            Turning raw data into insights and decisions.
+          </p>
+          <div class="pill-row">
+            <span class="pill">SQL</span>
+            <span class="pill">EDA</span>
+            <span class="pill">Excel / Google Sheets</span>
+            <span class="pill">Dashboards</span>
+            <span class="pill">Git &amp; GitHub</span>
+            <span class="pill">Postman</span>
+            <span class="pill">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
+        A selection of work demonstrating full stack, AI/ML and analytics capabilities.
+      </p>
+
+      <div class="projects-grid">
+        <div class="card project-card">
+          <h3>AI-Powered Student Performance Prediction</h3>
+          <p class="project-tech">Python · Pandas · Scikit-learn · ML</p>
+          <p>
+            Built a machine learning model to predict student performance based on
+            academic and demographic features. Includes data cleaning, feature
+            engineering and evaluation using multiple models.
+          </p>
+          <div class="project-links">
+            <!-- Replace # with your actual project link -->
+            <a href="#" target="_blank">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <h3>MERN Stack E-Commerce Web App</h3>
+          <p class="project-tech">React · Node.js · Express.js · MongoDB</p>
+          <p>
+            Full-stack e-commerce platform with product listings, cart,
+            authentication and admin dashboard for managing products and orders.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <h3>Task Management Dashboard</h3>
+          <p class="project-tech">MERN Stack · REST API · JWT</p>
+          <p>
+            Task management system that allows users to create, update and track
+            tasks with a clean dashboard and simple analytics.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank">View Repository →</a>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <h3>Sales Data Analytics Dashboard</h3>
+          <p class="project-tech">Excel / SQL / Python</p>
+          <p>
+            An interactive analytics dashboard showing revenue trends, customer
+            segments and key performance indicators to support decision-making.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank">View Project →</a>
+          </div>
+        </div>
+
+        <div class="card project-card">
+          <h3>Personal Portfolio Website</h3>
+          <p class="project-tech">React.js · Tailwind CSS</p>
+          <p>
+            A modern, responsive portfolio website showcasing skills, projects
+            and contact information, optimized for performance and SEO.
+          </p>
+          <div class="project-links">
+            <a href="#" target="_blank">Live Demo →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certificates -->
+    <section id="education">
+      <h2 class="section-title">Education & Certificates</h2>
+      <p class="section-subtitle">
+        Formal education combined with continuous learning in modern technologies.
+      </p>
+
+      <div class="edu-cert-grid">
+        <div class="card">
+          <h3>Education</h3>
+          <p><strong>B.Tech in Computer Science Engineering</strong></p>
+          <p class="section-subtitle">
+            (Add your college/university name and passing year here.)
+          </p>
+          <ul class="list">
+            <li>Core CS fundamentals: DSA, DBMS, OS, OOP.</li>
+            <li>Focused on software development and applied AI/ML.</li>
+            <li>Completed multiple academic and personal projects.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Certificates</h3>
+          <p class="section-subtitle">
+            Add your certificate links (Google Drive / platforms) here.
+          </p>
+          <ul class="list">
+            <li>Full Stack Development Certification</li>
+            <li>Machine Learning / AI Fundamentals</li>
+            <li>Data Analytics / Business Intelligence</li>
+            <li>Web Development Certification</li>
+            <li>Leadership &amp; Management / Soft Skills</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
+        Let’s collaborate on full stack, AI/ML or data-driven projects.
+      </p>
+
+      <div class="card contact-card">
+        <div class="contact-details">
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <!-- Replace with your email -->
+              <a href="mailto:your-email@example.com">your-email@example.com</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">
+              <!-- Replace with your phone number -->
+              +91-XXXXXXXXXX
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">
+              India (Open to Remote / Relocation)
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a class="social-chip" href="https://github.com/R1a2j3k4" target="_blank">
+              GitHub
+            </a>
+            <a class="social-chip" href="#" target="_blank">
+              LinkedIn
+            </a>
+            <a class="social-chip" href="#" target="_blank">
+              Portfolio Repo
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="section-subtitle">
+            Whether you’re looking for a developer, collaborator or just want
+            to discuss an idea, feel free to reach out. I’m always excited
+            to work on meaningful, impactful projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Raj Kumar Singh. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    // Set year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
